@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class WorldBuilder : MonoBehaviour
 {
+    public TextAsset mapFile;
     // Start is called before the first frame update
     void Start()
     {
-        Build(parseMap("map.json"));
+        Map map = JsonUtility.FromJson<Map>(mapFile.text);
+        Build(map);
     }
 
-    Map parseMap(string mapName)
-    {
-        return null;
-    }
+
 
     void Build(Map map)
     {

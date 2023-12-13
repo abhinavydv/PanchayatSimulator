@@ -1,32 +1,56 @@
 {
 	"objects": [
 		{
-			name: "building1",
-			type: "building",
-			pos: [0, 0],
-			size: [1, 1],
-			rotation: 0,
+			"name": "building1",
+			"type": "building",
+			"pos": {
+				"x": 0,
+				"y": 0
+			},
+			"size": {
+				"x": 1,
+				"y": 1
+			},
+			"rotation": 0
 		},
 		{
-			name: "road1",
-			type: "road",
-			pos: [1, 0],
-			size: [1, 1],
-			rotation: 0,
+			"name": "road1",
+			"type": "road",
+			"pos": {
+				"x": 1,
+				"y": 0
+			},
+			"size": {
+				"x": 1,
+				"y": 1
+			},
+			"rotation": 0
 		},
 		{
-			name: "road2",
-			type: "road",
-			pos: [1, 0],
-			size: [1, 1],
-			rotation: 0,
+			"name": "road2",
+			"type": "road",
+			"pos": {
+				"x": 2,
+				"y": 0
+			},
+			"size": {
+				"x": 1,
+				"y": 1
+			},
+			"rotation": 0
 		},
 		{
-			name: "road3",
-			type: "road",
-			pos: [0, 0],
-			size: [1, 1],
-			rotation: 0,
-		},
+			"name": "road3",
+			"type": "road",
+			"pos": {
+				"x": 3,
+				"y": 0
+			},
+			"size": {
+				"x": 1,
+				"y": 1
+			},
+			"rotation": 0
+		}
 	]
 }
