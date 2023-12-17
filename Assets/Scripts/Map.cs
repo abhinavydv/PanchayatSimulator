@@ -6,12 +6,12 @@ using UnityEngine;
 [Serializable]
 public class Map
 {
-    public List<MapObject> objects;
-    List<MapObject> selectedObjects;
+    public List<Structure> structures;
+    List<Structure> selectedObjects;
 
     public Map()
     {
-        objects = new List<MapObject>();
-        selectedObjects = new List<MapObject>();
+        structures = new List<Structure>();
+        selectedObjects = new List<Structure>();
     }
 }

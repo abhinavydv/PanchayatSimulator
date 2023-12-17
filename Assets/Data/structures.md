@@ -1,0 +1,24 @@
+- Bank
+    - Bank Branch
+    - Bank Mitra
+    - ATM
+- CSC
+- Health center
+    - District Hospital
+    - Sub district hospital
+- PHC
+- Sub center
+- PDS
+- Post Office
+    - Head office
+    - Sub office
+    - Branch
+- School
+- Work status
+    - Work yet to start
+    - Work in Progress
+    - Work completed
+    - Work Suspended
+- Skill development center
+- Drinking water resources
+- MGNREGA works
