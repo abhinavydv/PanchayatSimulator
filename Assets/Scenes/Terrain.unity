@@ -1413,6 +1413,9 @@ GameObject:
   m_Component:
   - component: {fileID: 728301355}
   - component: {fileID: 728301354}
+  - component: {fileID: 728301358}
+  - component: {fileID: 728301357}
+  - component: {fileID: 728301356}
   m_Layer: 0
   m_Name: WorldBuilder
   m_TagString: Untagged
@@ -1432,7 +1435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dd13e59e40acb4486a54f872dcb365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapFile: {fileID: 4900000, guid: c30c6f7237c8e56449ad0f66520fc29a, type: 3}
+  mapFile: {fileID: 4900000, guid: 44294b5ce2b2a754ab5e3fcfa4419716, type: 3}
   floor_height: 3
   terrain: {fileID: 1649204267}
   tarrainScale: 1.5
@@ -1453,6 +1456,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &728301356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728301353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c165b8cef0ab04646a2cad5946804b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotSpeed: 20
+--- !u!114 &728301357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728301353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc657d879d6af64449aebd181bbcad89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &728301358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728301353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341f398684816fc4790afdc298388080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildPrefab: {fileID: 6081832315647655598, guid: cfa76f5715c79da4f9b8ac2b0cdff805, type: 3}
 --- !u!1001 &931434968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1798,7 +1839,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 10000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1841,10 +1882,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e8bbbba77e9a974d944481ceeb6591d, type: 3}
+  m_Script: {fileID: 11500000, guid: 436275a13d4459746955fc6db5953473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomRate: 10
+  _active: 1
+  _enableRotation: 1
+  _mouseSense: 1.5
+  _enableTranslation: 1
+  _translationSpeed: 110
+  _enableMovement: 1
+  _movementSpeed: 20
+  _boostedSpeed: 100
+  _boostSpeed: 304
+  _moveUp: 101
+  _moveDown: 113
+  _enableSpeedAcceleration: 1
+  _speedAccelerationFactor: 1
+  _initPositonButton: 0
 --- !u!1001 &1076738500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2011,7 +2065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1219742334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,6 +2149,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1282293773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1076262714343606, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
+  m_PrefabInstance: {fileID: 2102648810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1285480191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2971,7 +3030,7 @@ GameObject:
   - component: {fileID: 1649204268}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3516,6 +3575,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Ground '
       objectReference: {fileID: 0}
+    - target: {fileID: 1076262714343606, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4802134562677756, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3679,13 +3742,38 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4802134562677756, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1649447423}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1076262714343606, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2102648812}
   m_SourcePrefab: {fileID: 100100000, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
 --- !u!4 &2102648811 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4802134562677756, guid: 68cbfa1438162b243ac02fb9e3e30581, type: 3}
   m_PrefabInstance: {fileID: 2102648810}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &2102648812
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282293773}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a90ec1b8be596134b912428bfce1f226, type: 3}
 --- !u!1001 &2140583695
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -82,6 +82,7 @@ public class WorldBuilder : MonoBehaviour
         go.AddComponent<MeshFilter>();
         go.AddComponent<MeshRenderer>();
         go.AddComponent<MeshCollider>();
+        go.tag = "Building";
 
         go.GetComponent<MeshFilter>().mesh = mesh;
         go.name = "Building";

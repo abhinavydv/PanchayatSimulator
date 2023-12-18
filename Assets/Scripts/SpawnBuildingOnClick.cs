@@ -24,6 +24,7 @@ public class SpawnBuildingOnClick : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
+            Debug.Log("mouse press");
             Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
