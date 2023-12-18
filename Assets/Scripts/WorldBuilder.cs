@@ -10,6 +10,12 @@ public class WorldBuilder : MonoBehaviour
 {
     public TextAsset mapFile;
     public double floor_height;
+    public GameObject corner1;
+    public GameObject corner2;
+    public GameObject terrain;
+    public float tarrainScale;
+    public float terrainRotation;
+    public Vector3 terrainPos;
     List<Mesh> meshes;
     // Start is called before the first frame update
     void Start()
@@ -166,7 +172,9 @@ public class WorldBuilder : MonoBehaviour
 
     private void Build(Map map)
     {
-        TransformPoints(map.structures);
+        float diff = TransformPoints(map.structures);
+        TransformTerrain(diff);
+
         for (int i=0; i<map.structures.Count; i++)
         {
             Structure obj = map.structures[i];
@@ -175,25 +183,40 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
-    void TransformPoints(List<Structure> structures){
+    void TransformTerrain(float diff){
+        terrain.transform.position = terrainPos;
+        terrain.transform.localScale = new Vector3(tarrainScale, tarrainScale, tarrainScale);
+        terrain.transform.Rotate(new Vector3(0, 1, 0), terrainRotation);
+    }
+
+    float TransformPoints(List<Structure> structures){
         float minX = int.MaxValue;
         float minY = int.MaxValue;
+        float maxX = int.MinValue;
+        float maxY = int.MinValue;
+        float diff;
 
         for (int i=0; i<structures.Count; i++){
             for (int j=0; j<structures[i].points.Count; j++){
                 if (structures[i].points[j].x < minX) minX = (float)structures[i].points[j].x;
                 if (structures[i].points[j].y < minY) minY = (float)structures[i].points[j].y;
+                if (structures[i].points[j].x > maxX) maxX = (float)structures[i].points[j].x;
+                if (structures[i].points[j].y > maxY) maxY = (float)structures[i].points[j].y;
             }
         }
+
+        diff = maxX - minX;
 
         for (int i=0; i<structures.Count; i++){
             for (int j=0; j<structures[i].points.Count; j++){
                 structures[i].points[j] = new Structure.Point{
-                    x = structures[i].points[j].x - minX,
-                    y = structures[i].points[j].y - minY
+                    x = structures[i].points[j].x - minX - diff / 2,
+                    y = structures[i].points[j].y - minY - diff / 2
                 };
             }
         }
+
+        return diff;
     }
 
     GameObject BuildOne(Structure obj)
