@@ -9,11 +9,13 @@ using UnityEngine;
 public class WorldBuilder : MonoBehaviour
 {
     public TextAsset mapFile;
-    public double floor_height;
+    public double floorHeight;
+    public float roadWidth;
     public GameObject terrain;
     public float tarrainScale;
     public float terrainRotation;
     public Vector3 terrainPos;
+    bool flag = false;
     List<Mesh> meshes;
     // Start is called before the first frame update
     void Start()
@@ -23,20 +25,22 @@ public class WorldBuilder : MonoBehaviour
         // TestBuild();
     }
 
-    GameObject Make3D(Vector2[] points, float height){
+    GameObject Make3D(Vector2[] points_param, float height, string name="Building"){
         float minX = int.MaxValue;
         float minY = int.MaxValue;
 
-        for (int i=0; i<points.Length; i++){
-            if (points[i].x < minX) minX = points[i].x;
-            if (points[i].y < minY) minY = points[i].y;
+        Vector2[] points = new Vector2[points_param.Length];
+
+        for (int i=0; i<points_param.Length; i++){
+            if (points_param[i].x < minX) minX = points_param[i].x;
+            if (points_param[i].y < minY) minY = points_param[i].y;
         }
 
-        for (int i=0; i<points.Length; i++){
-            points[i] = new Vector2(points[i].x - minX, points[i].y - minY);
+        for (int i=0; i<points_param.Length; i++){
+            points[i] = new Vector2(points_param[i].x - minX, points_param[i].y - minY);
         }
 
-        Mesh mesh = new Mesh();
+        Mesh mesh = new();
         Vector3[] vertices = new Vector3[points.Length * 2];
         int[] triangles = new int[points.Length * 12];
 
@@ -82,10 +86,10 @@ public class WorldBuilder : MonoBehaviour
         go.AddComponent<MeshFilter>();
         go.AddComponent<MeshRenderer>();
         go.AddComponent<MeshCollider>();
-        go.tag = "Building";
+        go.tag = name;
 
         go.GetComponent<MeshFilter>().mesh = mesh;
-        go.name = "Building";
+        go.name = name;
 
         go.transform.position = new Vector3(minX, 0, minY);
 
@@ -140,7 +144,7 @@ public class WorldBuilder : MonoBehaviour
 
                 triangles[j + 6] = i + 1;
                 triangles[j + 7] = i;
-                triangles[j + 8] = 0;
+                triangles[j + 8] = i != 0 ? i-1 : 0;
 
                 triangles[j + 11] = i + 1 + points.Length;
                 triangles[j + 10] = i + points.Length;
@@ -179,7 +183,8 @@ public class WorldBuilder : MonoBehaviour
         {
             Structure obj = map.structures[i];
             GameObject go = BuildOne(obj);
-            go.transform.parent = transform;
+            if (go != null)
+                go.transform.parent = transform;
         }
     }
 
@@ -221,12 +226,51 @@ public class WorldBuilder : MonoBehaviour
 
     GameObject BuildOne(Structure obj)
     {
-        GameObject go = Make3D(obj.points.Select(p => new Vector2((float)p.x, (float)p.y)).ToArray(), (float)obj.SHAPE_Leng);
-        // GameObject go = Make3D(obj.points.Select(p => new Vector2((float)p.x, (float)p.y)).ToArray(), obj.No_Floors * floor_height);
+        GameObject go;
+        if (obj.type == "building") {
+            Vector2[] points = obj.points.Select(p => new Vector2((float)p.x, (float)p.y)).ToArray();
+            go = Make3D(points, (float)obj.SHAPE_Leng);
+            // GameObject go = Make3D(obj.points.Select(p => new Vector2((float)p.x, (float)p.y)).ToArray(), obj.No_Floors * floor_height);
+        } else if (obj.type == "road") {
+            if (!flag){
+                // flag = true;
+                Vector2[] points = new Vector2[obj.points.Count * 2];
+                for (int i=0; i<obj.points.Count; i++){
+                    points[2 * i] = new Vector2((float)obj.points[i].x - roadWidth, (float)obj.points[i].y);
+                    points[2 * i + 1] = new Vector2((float)obj.points[i].x, (float)obj.points[i].y);
+                    points[2 * i + 1].x += roadWidth;
+                }
+                // for (int i=0; i<obj.points.Count; i++){
+                //     points[i] = new Vector2((float)obj.points[i].x - roadWidth, (float)obj.points[i].y);
+                //     points[2 * obj.points.Count - i - 1] = new Vector2((float)obj.points[i].x, (float)obj.points[i].y);
+                //     points[2 * obj.points.Count - i - 1].x += roadWidth;
+                // }
+                // go = Make3D(points, 0.1f, "Road");
+                go = new();
+                go.AddComponent<MeshRenderer>();
+                go.name = "Road";
+                for (int i=0; i<points.Length; i++){
+                    Debug.Log(points[i].x + " " + points[i].y);
+                    GameObject prefab = Resources.Load<GameObject>("Prefabs/building1");
+                    GameObject g = Instantiate(prefab);
+                    g.transform.position = new Vector3(points[i].x, 0, points[i].y);
+                    g.transform.localScale = new Vector3(5, 5, 5);
+                    g.name = "road_corner";
+                    g.transform.parent = go.transform;
+                }
+            } else {
+                go = null;
+            }
+        } else {
+            throw new Exception("Unknown type: " + obj.type);
+        }
 
-        Material material = new Material(Shader.Find("Standard"));
-        material.color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1.0f);
-        go.GetComponent<MeshRenderer>().material = material;
+        Material material = new(Shader.Find("Standard"))
+        {
+            color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1.0f)
+        };
+        if (go != null)
+            go.GetComponent<MeshRenderer>().material = material;
 
         return go;
     }

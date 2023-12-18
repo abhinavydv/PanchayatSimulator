@@ -1413,9 +1413,6 @@ GameObject:
   m_Component:
   - component: {fileID: 728301355}
   - component: {fileID: 728301354}
-  - component: {fileID: 728301358}
-  - component: {fileID: 728301357}
-  - component: {fileID: 728301356}
   m_Layer: 0
   m_Name: WorldBuilder
   m_TagString: Untagged
@@ -1435,12 +1432,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dd13e59e40acb4486a54f872dcb365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapFile: {fileID: 4900000, guid: 44294b5ce2b2a754ab5e3fcfa4419716, type: 3}
-  floor_height: 3
+  mapFile: {fileID: 4900000, guid: c30c6f7237c8e56449ad0f66520fc29a, type: 3}
+  floorHeight: 3
+  roadWidth: 2
   terrain: {fileID: 1649204267}
   tarrainScale: 1.5
   terrainRotation: 30
-  terrainPos: {x: -45, y: 0, z: 100}
+  terrainPos: {x: -900, y: 0, z: 100}
 --- !u!4 &728301355
 Transform:
   m_ObjectHideFlags: 0
@@ -1456,44 +1454,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &728301356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728301353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c165b8cef0ab04646a2cad5946804b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotSpeed: 20
---- !u!114 &728301357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728301353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc657d879d6af64449aebd181bbcad89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &728301358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728301353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 341f398684816fc4790afdc298388080, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildPrefab: {fileID: 6081832315647655598, guid: cfa76f5715c79da4f9b8ac2b0cdff805, type: 3}
 --- !u!1001 &931434968
 PrefabInstance:
   m_ObjectHideFlags: 0

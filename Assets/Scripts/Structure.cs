@@ -33,6 +33,7 @@ public class Structure
     public double SHAPE_Area;
     public string GP_Code;
     public string GP_Nam;
+    public string type;
 
     [Serializable]
     class BBox
