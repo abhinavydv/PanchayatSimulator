@@ -234,12 +234,12 @@ public class WorldBuilder : MonoBehaviour
         } else if (obj.type == "road") {
             if (!flag){
                 // flag = true;
-                Vector2[] points = new Vector2[obj.points.Count * 2];
-                for (int i=0; i<obj.points.Count; i++){
-                    points[2 * i] = new Vector2((float)obj.points[i].x - roadWidth, (float)obj.points[i].y);
-                    points[2 * i + 1] = new Vector2((float)obj.points[i].x, (float)obj.points[i].y);
-                    points[2 * i + 1].x += roadWidth;
-                }
+                // Vector2[] points = new Vector2[obj.points.Count * 2];
+                // for (int i=0; i<obj.points.Count; i++){
+                //     points[2 * i] = new Vector2((float)obj.points[i].x - roadWidth, (float)obj.points[i].y);
+                //     points[2 * i + 1] = new Vector2((float)obj.points[i].x, (float)obj.points[i].y);
+                //     points[2 * i + 1].x += roadWidth;
+                // }
                 // for (int i=0; i<obj.points.Count; i++){
                 //     points[i] = new Vector2((float)obj.points[i].x - roadWidth, (float)obj.points[i].y);
                 //     points[2 * obj.points.Count - i - 1] = new Vector2((float)obj.points[i].x, (float)obj.points[i].y);
@@ -249,14 +249,16 @@ public class WorldBuilder : MonoBehaviour
                 go = new();
                 go.AddComponent<MeshRenderer>();
                 go.name = "Road";
-                for (int i=0; i<points.Length; i++){
-                    Debug.Log(points[i].x + " " + points[i].y);
-                    GameObject prefab = Resources.Load<GameObject>("Prefabs/building1");
-                    GameObject g = Instantiate(prefab);
-                    g.transform.position = new Vector3(points[i].x, 0, points[i].y);
-                    g.transform.localScale = new Vector3(5, 5, 5);
-                    g.name = "road_corner";
-                    g.transform.parent = go.transform;
+                for (int i=0; i<obj.points.Count - 1; i++){
+                    // create all the roads as a collecton on cuboids
+                    Vector2[] points2 = new Vector2[4];
+                    points2[0] = new Vector2((float)obj.points[i].x - roadWidth, (float)obj.points[i].y);
+                    points2[1] = new Vector2((float)obj.points[i].x + roadWidth, (float)obj.points[i].y);
+                    points2[3] = new Vector2((float)obj.points[i+1].x + roadWidth, (float)obj.points[i+1].y);
+                    points2[2] = new Vector2((float)obj.points[i+1].x - roadWidth, (float)obj.points[i+1].y);
+                    GameObject go2 = Make3D(points2, 0.1f, "Road");
+                    go2.transform.position = new Vector3(go2.transform.position.x, 1, go2.transform.position.z);
+                    go2.transform.parent = go.transform;
                 }
             } else {
                 go = null;
