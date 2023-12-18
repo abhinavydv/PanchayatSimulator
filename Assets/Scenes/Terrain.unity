@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dd13e59e40acb4486a54f872dcb365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapFile: {fileID: 4900000, guid: c30c6f7237c8e56449ad0f66520fc29a, type: 3}
+  mapFile: {fileID: 4900000, guid: 44294b5ce2b2a754ab5e3fcfa4419716, type: 3}
   floor_height: 3
 --- !u!4 &728301355
 Transform:
