@@ -10,8 +10,6 @@ public class WorldBuilder : MonoBehaviour
 {
     public TextAsset mapFile;
     public double floor_height;
-    public GameObject corner1;
-    public GameObject corner2;
     public GameObject terrain;
     public float tarrainScale;
     public float terrainRotation;
@@ -25,7 +23,7 @@ public class WorldBuilder : MonoBehaviour
         // TestBuild();
     }
 
-    GameObject Make3D(Vector2[] points, int height){
+    GameObject Make3D(Vector2[] points, float height){
         float minX = int.MaxValue;
         float minY = int.MaxValue;
 
@@ -83,6 +81,7 @@ public class WorldBuilder : MonoBehaviour
         GameObject go = new GameObject();
         go.AddComponent<MeshFilter>();
         go.AddComponent<MeshRenderer>();
+        go.AddComponent<MeshCollider>();
 
         go.GetComponent<MeshFilter>().mesh = mesh;
         go.name = "Building";
@@ -221,7 +220,8 @@ public class WorldBuilder : MonoBehaviour
 
     GameObject BuildOne(Structure obj)
     {
-        GameObject go = Make3D(obj.points.Select(p => new Vector2((float)p.x, (float)p.y)).ToArray(), (int)(obj.No_Floors * floor_height));
+        GameObject go = Make3D(obj.points.Select(p => new Vector2((float)p.x, (float)p.y)).ToArray(), (float)obj.SHAPE_Leng);
+        // GameObject go = Make3D(obj.points.Select(p => new Vector2((float)p.x, (float)p.y)).ToArray(), obj.No_Floors * floor_height);
 
         Material material = new Material(Shader.Find("Standard"));
         material.color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1.0f);
