@@ -28,7 +28,13 @@ public class SpawnBuildingOnClick : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Instantiate(buildPrefab, new Vector3(hit.point.x, hit.point.y + buildPrefab.transform.position.y, hit.point.z), new Quaternion(-0.7071f, 0, 0, 0.7071f));
+                if (hit.collider.gameObject.tag == "Ground")
+                {
+                    GameObject newObj;
+                    newObj = Instantiate(buildPrefab, new Vector3(hit.point.x, hit.point.y + buildPrefab.transform.position.y, hit.point.z), new Quaternion(-0.7071f, 0, 0, 0.7071f));
+                    newObj.tag = "Building";
+                    newObj.AddComponent<MeshCollider>();
+                }
             }
         }
     }
