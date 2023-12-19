@@ -29,7 +29,7 @@ public class RotateBuildings : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.gameObject.tag == "Building")
+                if (hit.collider.gameObject.tag == "Building" || hit.collider.gameObject.tag == "NewBuilding")
                 {
                     hit.collider.gameObject.transform.Rotate(0,Time.deltaTime*rotSpeed,0);
                 }
