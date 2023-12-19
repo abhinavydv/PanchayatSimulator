@@ -16,7 +16,8 @@ public class WorldBuilder : MonoBehaviour
     public float terrainRotation;
     public Vector3 terrainPos;
     bool flag = false;
-    List<Mesh> meshes;
+    // List<Mesh> meshes;
+    int roadIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -193,7 +194,7 @@ public class WorldBuilder : MonoBehaviour
     void TransformTerrain(float diff){
         terrain.transform.position = terrainPos;
         terrain.transform.localScale = new Vector3(tarrainScale, tarrainScale, tarrainScale);
-        terrain.transform.Rotate(new Vector3(0, 1, 0), terrainRotation);
+        terrain.transform.Rotate(new Vector3(0, 1, 0), terrainRotation - terrain.transform.rotation.eulerAngles.y);
     }
 
     float TransformPoints(List<Structure> structures){
@@ -250,7 +251,9 @@ public class WorldBuilder : MonoBehaviour
                 // go = Make3D(points, 0.1f, "Road");
                 go = new();
                 go.AddComponent<MeshRenderer>();
-                go.name = "Road";
+                go.name = "Road" + roadIndex;
+                roadIndex++;
+
                 for (int i=0; i<obj.points.Count - 1; i++){
                     // create all the roads as a collecton on cuboids
                     Vector2[] points2 = new Vector2[4];
@@ -261,6 +264,10 @@ public class WorldBuilder : MonoBehaviour
                     GameObject go2 = Make3D(points2, 0.1f, "Road");
                     go2.transform.position = new Vector3(go2.transform.position.x, 1, go2.transform.position.z);
                     go2.transform.parent = go.transform;
+                    go2.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Standard"))
+                    {
+                        color = new Color(0f, 0f, 0f, 1f)
+                    };
                 }
             } else {
                 go = null;
