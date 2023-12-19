@@ -32,7 +32,7 @@ public class SpawnBuildingOnClick : MonoBehaviour
     void Update()
     {
         SpawnAtMousePosn();
-        Debug.Log(score + " " + wallet);
+        // Debug.Log(score + " " + wallet);
     }
 
     void SpawnAtMousePosn()
