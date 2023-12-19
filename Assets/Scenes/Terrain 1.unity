@@ -858,6 +858,7 @@ GameObject:
   - component: {fileID: 275517032}
   - component: {fileID: 275517034}
   - component: {fileID: 275517033}
+  - component: {fileID: 275517035}
   m_Layer: 5
   m_Name: digit
   m_TagString: Untagged
@@ -967,7 +968,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 81.78153, w: 0}
+  m_margin: {x: 0, y: 0, z: -94.62047, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -981,6 +982,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275517031}
   m_CullTransparentMesh: 1
+--- !u!114 &275517035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275517031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2dfa517d6fbd644fac27930cf7c12a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 275517033}
 --- !u!1001 &350716230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1808,6 +1822,7 @@ GameObject:
   - component: {fileID: 619682174}
   - component: {fileID: 619682176}
   - component: {fileID: 619682175}
+  - component: {fileID: 619682177}
   m_Layer: 5
   m_Name: digit
   m_TagString: Untagged
@@ -1931,6 +1946,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619682173}
   m_CullTransparentMesh: 1
+--- !u!114 &619682177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619682173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ee541326b228f44976b1a77fd38251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 619682175}
 --- !u!1 &631099475
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,7 +3503,7 @@ GameObject:
   - component: {fileID: 1587040851}
   - component: {fileID: 1587040850}
   m_Layer: 5
-  m_Name: score
+  m_Name: moral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3520,7 +3548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'score : '
+  m_text: 'moral : '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3792,6 +3820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc657d879d6af64449aebd181bbcad89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redScore: 40
+  redWallet: 10000
 --- !u!114 &1649204270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3824,8 +3854,8 @@ MonoBehaviour:
   - {fileID: 7880067092012452589, guid: 4434c44928d7fa146bdf06b15ffd949c, type: 3}
   - {fileID: 7616754904763359650, guid: 0c99491272b879042ab3dd63b1542ba5, type: 3}
   - {fileID: 3129947202896142331, guid: d07dedae6cda5cf498e77d77bada4377, type: 3}
-  Costs: 40420f0080841e0020a1070080841e0040420f00a0860100
-  moralityIndex: 050000000800000002000000050000000400000003000000
+  Costs: 40420f0080841e0020a1070000350c00400d0300a0860100
+  moralityIndex: 050000000800000005000000020000000400000001000000
   initialWallet: 10000000
   benefitRadius: 50
 --- !u!1001 &1649447422

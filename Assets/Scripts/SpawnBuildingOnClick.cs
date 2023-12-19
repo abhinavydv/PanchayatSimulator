@@ -8,9 +8,9 @@ using System.Linq;
 
 public class SpawnBuildingOnClick : MonoBehaviour
 {
-    [SerializeField] public static List<GameObject> list;
-    [SerializeField] public static List<int> Costs;
-    [SerializeField] public static List<int> moralityIndex;
+    public List<GameObject> list;
+    public List<int> Costs;
+    public List<int> moralityIndex;
     private Camera cam = null;
     
     Vector3 spawnPoint;
