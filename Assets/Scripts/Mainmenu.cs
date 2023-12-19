@@ -7,6 +7,7 @@ public class Mainmenu : MonoBehaviour
 {
     public void play()
     {
+        AudioManager.AudioInstance.PlayMusic("GameTheme");
         SceneManager.LoadScene("Terrain 1");
     }
 
