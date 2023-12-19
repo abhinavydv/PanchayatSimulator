@@ -80,15 +80,16 @@ public class WorldBuilder : MonoBehaviour
         }
 
         mesh.vertices = vertices;
+        mesh.name = "buildingMesh";
         mesh.triangles = triangles;
 
         GameObject go = new GameObject();
         go.AddComponent<MeshFilter>();
+        go.GetComponent<MeshFilter>().mesh = mesh;
         go.AddComponent<MeshRenderer>();
         go.AddComponent<MeshCollider>();
         go.tag = name;
 
-        go.GetComponent<MeshFilter>().mesh = mesh;
         go.name = name;
 
         go.transform.position = new Vector3(minX, 0, minY);
@@ -229,8 +230,8 @@ public class WorldBuilder : MonoBehaviour
         GameObject go;
         if (obj.type == "building") {
             Vector2[] points = obj.points.Select(p => new Vector2((float)p.x, (float)p.y)).ToArray();
-            go = Make3D(points, (float)obj.SHAPE_Leng);
-            // GameObject go = Make3D(obj.points.Select(p => new Vector2((float)p.x, (float)p.y)).ToArray(), obj.No_Floors * floor_height);
+            // go = Make3D(points, (float)obj.SHAPE_Leng);
+            go = Make3D(points, (float)(obj.No_Floors * floorHeight));
         } else if (obj.type == "road") {
             if (!flag){
                 // flag = true;
