@@ -44,7 +44,7 @@ public class SpawnBuildingOnClick : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
-                    if (hit.collider.gameObject.tag == "Ground")
+                    if (hit.collider.gameObject.tag == "Ground" && Costs[i]<=wallet)
                     {
                         GameObject newObj;
                         spawnPoint = new Vector3(hit.point.x, hit.point.y + list[i].transform.position.y, hit.point.z);
