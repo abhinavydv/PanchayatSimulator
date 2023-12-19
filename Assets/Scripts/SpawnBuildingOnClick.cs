@@ -17,7 +17,7 @@ public class SpawnBuildingOnClick : MonoBehaviour
     int buildingCount;
     [SerializeField] int initialWallet;
     [SerializeField] int benefitRadius;
-    public int wallet;
+    public static int wallet;
     public static int score;
 
     // Start is called before the first frame update

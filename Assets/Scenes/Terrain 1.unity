@@ -2129,7 +2129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9dd13e59e40acb4486a54f872dcb365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapFile: {fileID: 4900000, guid: c00a1487192ab164c832984814b9c43c, type: 3}
+  mapFile: {fileID: 4900000, guid: 44294b5ce2b2a754ab5e3fcfa4419716, type: 3}
   floorHeight: 3
   roadWidth: 2
   terrain: {fileID: 1649204267}
@@ -3754,6 +3754,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1649204268}
+  - component: {fileID: 1649204271}
+  - component: {fileID: 1649204270}
+  - component: {fileID: 1649204269}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Ground
@@ -3777,6 +3780,54 @@ Transform:
   - {fileID: 2102648811}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1649204269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649204267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc657d879d6af64449aebd181bbcad89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1649204270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649204267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c165b8cef0ab04646a2cad5946804b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotSpeed: 20
+--- !u!114 &1649204271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649204267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341f398684816fc4790afdc298388080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 7258537135039789302, guid: 74ae4c56518277c4b9c791b5c35395a3, type: 3}
+  - {fileID: 848033014288630275, guid: 8a9f95385675cd74faef8c3aa1255aa4, type: 3}
+  - {fileID: 6441043510540721703, guid: 48cd9d2b16c81ab46a5bae6b30d623c3, type: 3}
+  - {fileID: 7880067092012452589, guid: 4434c44928d7fa146bdf06b15ffd949c, type: 3}
+  - {fileID: 7616754904763359650, guid: 0c99491272b879042ab3dd63b1542ba5, type: 3}
+  - {fileID: 3129947202896142331, guid: d07dedae6cda5cf498e77d77bada4377, type: 3}
+  Costs: 40420f0080841e0020a1070080841e0040420f00a0860100
+  moralityIndex: 050000000800000002000000050000000400000003000000
+  initialWallet: 10000000
+  benefitRadius: 50
 --- !u!1001 &1649447422
 PrefabInstance:
   m_ObjectHideFlags: 0
