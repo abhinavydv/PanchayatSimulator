@@ -28,7 +28,7 @@ public class DestroyOnClick : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.gameObject.tag == "Building")
+                if (hit.collider.gameObject.tag == "Building" || hit.collider.gameObject.tag == "NewBuilding")
                 {
                     // Debug.Log("destroyed go");
                     Destroy(hit.collider.gameObject);

@@ -89,6 +89,7 @@ public class WorldBuilder : MonoBehaviour
         go.AddComponent<MeshRenderer>();
         go.AddComponent<MeshCollider>();
         go.tag = name;
+        // go.layers = name;
 
         go.name = name;
 

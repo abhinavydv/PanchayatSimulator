@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Building
   - Road
+  - NewBuilding
   layers:
   - Default
   - TransparentFX

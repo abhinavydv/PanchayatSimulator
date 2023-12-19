@@ -3577,11 +3577,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   list:
-  - {fileID: 919132149155446097, guid: 932bd513279569a42ad844f37ddbe0b2, type: 3}
-  - {fileID: 919132149155446097, guid: ddd0b637011b5cc47b0fd8ff31ddb40e, type: 3}
-  - {fileID: 919132149155446097, guid: 555f033251d830945b5e4125cc8d5dbf, type: 3}
-  - {fileID: 919132149155446097, guid: 3785be4e6159acd4ea2dd1e763a49c6f, type: 3}
-  - {fileID: 919132149155446097, guid: a97fcb0c504a97342bc669215db4e250, type: 3}
+  - {fileID: 4636343907772200950, guid: 74ae4c56518277c4b9c791b5c35395a3, type: 3}
+  - {fileID: 6913344665631258451, guid: 8a9f95385675cd74faef8c3aa1255aa4, type: 3}
+  - {fileID: 8532570203434992657, guid: 48cd9d2b16c81ab46a5bae6b30d623c3, type: 3}
+  - {fileID: 6519461379079570965, guid: 4434c44928d7fa146bdf06b15ffd949c, type: 3}
+  - {fileID: 329852828971087796, guid: 0c99491272b879042ab3dd63b1542ba5, type: 3}
+  - {fileID: 824817444254284822, guid: d07dedae6cda5cf498e77d77bada4377, type: 3}
+  Costs: 40420f0080841e0020a1070080841e0040420f00a0860100
+  moralityIndex: 050000000800000002000000050000000400000003000000
+  initialWallet: 10000000
+  benefitRadius: 50
 --- !u!1001 &1649447422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4792,5 +4797,5 @@ SceneRoots:
   - {fileID: 1815581971}
   - {fileID: 963194228}
   - {fileID: 728301355}
-  - {fileID: 1649204268}
   - {fileID: 769670874}
+  - {fileID: 1649204268}
