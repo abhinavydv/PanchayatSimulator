@@ -33,7 +33,7 @@ public class DestroyOnClick : MonoBehaviour
             {
                 if ((hit.collider.gameObject.tag == "Building" || hit.collider.gameObject.tag == "NewBuilding") && SpawnBuildingOnClick.wallet>=redWallet)
                 {
-                    // Debug.Log("destroyed go");
+                    Debug.Log("destroyed go");
                     Destroy(hit.collider.gameObject);
                     SpawnBuildingOnClick.score -= redScore;
                     SpawnBuildingOnClick.wallet -= redWallet;

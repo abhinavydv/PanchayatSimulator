@@ -24,7 +24,6 @@ public class RotateBuildings : MonoBehaviour
     {
         if (Input.GetKey("r"))
         {
-            // Debug.Log("r down");
             Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
@@ -32,6 +31,7 @@ public class RotateBuildings : MonoBehaviour
                 if (hit.collider.gameObject.tag == "Building" || hit.collider.gameObject.tag == "NewBuilding")
                 {
                     hit.collider.gameObject.transform.Rotate(0,Time.deltaTime*rotSpeed,0);
+                    Debug.Log("r down");
                 }
             }
         }
