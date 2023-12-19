@@ -8,17 +8,17 @@ using System.Linq;
 
 public class SpawnBuildingOnClick : MonoBehaviour
 {
-    [SerializeField] List<GameObject> list;
-    [SerializeField] List<int> Costs;
-    [SerializeField] List<int> moralityIndex;
+    [SerializeField] public static List<GameObject> list;
+    [SerializeField] public static List<int> Costs;
+    [SerializeField] public static List<int> moralityIndex;
     private Camera cam = null;
     
     Vector3 spawnPoint;
     int buildingCount;
     [SerializeField] int initialWallet;
     [SerializeField] int benefitRadius;
-    int wallet;
-    int score;
+    public int wallet;
+    public static int score;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +59,7 @@ public class SpawnBuildingOnClick : MonoBehaviour
         }
     }
 
-    int cast(Vector3 spawnPoint)
+    public int cast(Vector3 spawnPoint)
     {
         //Add layers here to only detect the buildings
         Collider[] hitBuildings = Physics.OverlapSphere(spawnPoint, benefitRadius);
