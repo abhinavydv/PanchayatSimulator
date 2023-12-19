@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public class SpawnBuildingOnClick : MonoBehaviour
 {
     [SerializeField] List<GameObject> list;
     private Camera cam = null;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class SpawnBuildingOnClick : MonoBehaviour
 
     void SpawnAtMousePosn()
     {
-        for (int i=0; i<5; i++)
+        for (int i=0; i<list.Count; i++)
         {
             if (Input.GetKeyDown((i+1).ToString())){
                 Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
