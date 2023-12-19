@@ -31,7 +31,7 @@ public class RotateBuildings : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == "Building")
                 {
-                    hit.collider.gameObject.transform.Rotate(0,0,Time.deltaTime*rotSpeed);
+                    hit.collider.gameObject.transform.Rotate(0,Time.deltaTime*rotSpeed,0);
                 }
             }
         }

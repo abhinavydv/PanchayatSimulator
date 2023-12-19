@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SpawnBuildingOnClick : MonoBehaviour
 {
-    [SerializeField] GameObject buildPrefab = null;
+    [SerializeField] List<GameObject> list;
     private Camera cam = null;
 
     // Start is called before the first frame update
@@ -22,19 +22,20 @@ public class SpawnBuildingOnClick : MonoBehaviour
 
     void SpawnAtMousePosn()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        for (int i=0; i<5; i++)
         {
-            Debug.Log("mouse press");
-            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider.gameObject.tag == "Ground")
+            if (Input.GetKeyDown((i+1).ToString())){
+                Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
                 {
-                    GameObject newObj;
-                    newObj = Instantiate(buildPrefab, new Vector3(hit.point.x, hit.point.y + buildPrefab.transform.position.y, hit.point.z), new Quaternion(-0.7071f, 0, 0, 0.7071f));
-                    newObj.tag = "Building";
-                    newObj.AddComponent<MeshCollider>();
+                    if (hit.collider.gameObject.tag == "Ground")
+                    {
+                        GameObject newObj;
+                        newObj = Instantiate(list[i], new Vector3(hit.point.x, hit.point.y + list[i].transform.position.y, hit.point.z), Quaternion.identity);
+                        newObj.tag = "Building"; 
+                        newObj.AddComponent<MeshCollider>();
+                    }
                 }
             }
         }
